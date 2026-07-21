@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastAPI Feedback Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 400px;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            margin-bottom: 25px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: none;
+            height: 80px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #333;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #555;
+        }
+
+        h3 {
+            margin-top: 20px;
+        }
+
+        #response {
+            min-height: 40px;
+            background: #f7f7f7;
+            padding: 10px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>FastAPI Feedback Form</h2>
+
+    <form id="feedbackForm">
+
+        <input
+            type="text"
+            id="student_name"
+            placeholder="Student Name"
+            required>
+
+        <input
+            type="text"
+            id="topic"
+            placeholder="Topic"
+            required>
+
+        <input
+            type="number"
+            id="rating"
+            placeholder="Rating 1 to 5"
+            min="1"
+            max="5"
+            required>
+
+        <textarea
+            id="comment"
+            placeholder="Comment"
+            required></textarea>
+
+        <button type="submit">
+            Submit Feedback
+        </button>
+
+    </form>
+
+    <h3>Response</h3>
+    <div id="response"></div>
+
+</div>
+
+<script>
+document.getElementById("feedbackForm").addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    const name = document.getElementById("student_name").value;
+    const topic = document.getElementById("topic").value;
+    const rating = document.getElementById("rating").value;
+    const comment = document.getElementById("comment").value;
+
+    document.getElementById("response").innerHTML =
+        `<b>Student:</b> ${name}<br>
+         <b>Topic:</b> ${topic}<br>
+         <b>Rating:</b> ${rating}<br>
+         <b>Comment:</b> ${comment}`;
+});
+</script>
+
+</body>
+</html>
